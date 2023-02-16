@@ -8,7 +8,7 @@ const onSubmit = vi.fn();
 const error = false;
 
 describe('LoginForm', () => {
-	it('should have an input for username or email with label', () => {
+	beforeEach(() => {
 		render(
 			<LoginForm
 				loginInfo={initialLoginInfo}
@@ -17,7 +17,9 @@ describe('LoginForm', () => {
 				error={error}
 			/>
 		);
+	});
 
+	it('should have an input for username or email with label', () => {
 		const labelElement = screen.getByLabelText('Email or username');
 		const inputElement = screen.getByPlaceholderText(
 			'Enter your email or username'
@@ -28,15 +30,6 @@ describe('LoginForm', () => {
 	});
 
 	it('should have an input for password with label', () => {
-		render(
-			<LoginForm
-				loginInfo={initialLoginInfo}
-				onChange={onChange}
-				onSubmit={onSubmit}
-				error={error}
-			/>
-		);
-
 		const labelElement = screen.getByLabelText('Password');
 		const inputElement = screen.getByPlaceholderText('Enter your password');
 		expect(labelElement).toBeInTheDocument();
@@ -45,15 +38,6 @@ describe('LoginForm', () => {
 	});
 
 	it('should have a submit type button with text "Login"', () => {
-		render(
-			<LoginForm
-				loginInfo={initialLoginInfo}
-				onChange={onChange}
-				onSubmit={onSubmit}
-				error={error}
-			/>
-		);
-
 		const element = screen.getByRole('button');
 
 		expect(element).toBeInTheDocument();

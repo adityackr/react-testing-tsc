@@ -13,10 +13,11 @@ const users = [
 ];
 
 describe('App', () => {
-	it('renders App component', () => {
+	beforeEach(() => {
 		mockedAxios.get.mockResolvedValue({ data: users });
 		render(<App />);
-
+	});
+	it('renders App component', () => {
 		expect(
 			screen.getByPlaceholderText('Enter your email or username')
 		).toBeInTheDocument();
@@ -28,9 +29,6 @@ describe('App', () => {
 	});
 
 	it('should should show error message if username or password is invalid', async () => {
-		mockedAxios.get.mockResolvedValue({ data: users });
-		render(<App />);
-
 		const loginButton = screen.getByRole('button');
 
 		await userEvent.click(loginButton);
@@ -39,9 +37,6 @@ describe('App', () => {
 	});
 
 	it('should logged in successfully and logged out when click the logout button', async () => {
-		mockedAxios.get.mockResolvedValue({ data: users });
-		render(<App />);
-
 		await userEvent.type(
 			screen.getByPlaceholderText('Enter your email or username'),
 			users[1].username
