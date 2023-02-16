@@ -35,7 +35,7 @@ describe('ModalContent', () => {
 		expect(element).toBeInTheDocument();
 	});
 
-	it('should have a cancel button', async () => {
+	it('should have a cancel button', () => {
 		render(
 			<ModalContent product={product} onClick={() => console.log('Hello')} />
 		);
