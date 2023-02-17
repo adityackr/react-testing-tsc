@@ -52,7 +52,6 @@ describe('App', () => {
 		expect(
 			screen.getByText(`Logged in as ${users[1].username}`)
 		).toBeInTheDocument();
-		expect(screen.getByText('Logout')).toBeInTheDocument();
 
 		await userEvent.click(screen.getByText('Logout'));
 		expect(screen.getByText('Login')).toBeInTheDocument();

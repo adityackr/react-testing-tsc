@@ -3,8 +3,8 @@ import { vi } from 'vitest';
 import { initialLoginInfo } from '../App';
 import LoginForm from '../components/loginForm';
 
-const onChange = vi.fn();
-const onSubmit = vi.fn();
+const onChange = vi.fn(() => console.log('changed'));
+const onSubmit = vi.fn(() => console.log('submitted'));
 const error = false;
 
 describe('LoginForm', () => {

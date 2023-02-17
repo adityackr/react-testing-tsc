@@ -1,8 +1,7 @@
 import axios from 'axios';
 import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
+import HomePage from './components/home-page';
 import LoginForm from './components/loginForm';
-import Button from './components/shared/ui/Button';
-import Heading from './components/shared/ui/Heading';
 
 export type InitialInfo = {
 	username: string;
@@ -78,16 +77,7 @@ const App = () => {
 	return (
 		<div>
 			{loginInfo.isLoggedIn ? (
-				<div>
-					<Heading>Logged in as {loginInfo.username}</Heading>
-					<Button
-						style={{ margin: '0 auto', width: '8rem' }}
-						type={'button'}
-						onClick={handleLogoutBtn}
-					>
-						Logout
-					</Button>
-				</div>
+				<HomePage username={loginInfo.username} onClick={handleLogoutBtn} />
 			) : (
 				<LoginForm
 					onSubmit={handleSubmit}
