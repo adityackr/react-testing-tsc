@@ -5,7 +5,7 @@ import { Mocked, vi } from 'vitest';
 import App from '../App';
 
 vi.mock('axios');
-const mockedAxios = axios as Mocked<typeof axios | any>;
+const mockedAxios = axios as Mocked<typeof axios>;
 
 const users = [
 	{ username: 'aditya', password: 'Pass1234' },
@@ -28,7 +28,7 @@ describe('App', () => {
 		expect(screen.getByText('Login')).toBeInTheDocument();
 	});
 
-	it('should should show error message if username or password is invalid', async () => {
+	it('should show error message if username or password is invalid', async () => {
 		const loginButton = screen.getByRole('button');
 
 		await userEvent.click(loginButton);
