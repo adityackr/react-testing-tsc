@@ -14,7 +14,7 @@ const users = [
 
 describe('App', () => {
 	beforeEach(() => {
-		mockedAxios.get.mockResolvedValue({ data: users });
+		mockedAxios.get.mockResolvedValueOnce({ data: users });
 		render(<App />);
 	});
 	it('renders App component', () => {
